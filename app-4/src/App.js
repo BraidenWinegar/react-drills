@@ -1,18 +1,38 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import Longin from "./Components/Longin";
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      name: '',
+      password: ''
+    }
+  }
+
+  handleChangeName = (name) => {
+    this.setState ({
+      name: name
+    })
+  }
+
+  handleChangePassword = (password) => {
+    this.setState ({
+      password: password
+    })
+  }
+
   render() {
+    console.log(this.state.name)
+    console.log(this.state.password)
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Longin updateName={this.handleChangeName} 
+        updatePassword={this.handleChangePassword} 
+        name={this.state.name} 
+        password={this.state.password}/>
       </div>
     );
   }
