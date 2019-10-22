@@ -1,22 +1,16 @@
-import React, { Component } from "react";
-import logo from "./logo.svg";
+import React, { useState } from "react";
 import "./App.css";
 import List from './Components/List'
 
-class App extends Component {
-  constructor () {
-    super();
-    this.state = {
-      foods: ['apples', 'peaches', 'pie', 'cobbler', 'tia curry', 'grilled cheese sandwich', 'soup',  'chowder']
-    }
-  }
-  render() {
-    return (
-      <div className="App">
-        <List foods={this.state.foods}/>
-      </div>
-    );
-  }
+const App =() => {
+
+  const [foods, setFoods] = useState(['apples', 'peaches', 'pie', 'cobbler', 'tia curry', 'grilled cheese sandwich', 'soup',  'chowder']);
+  
+  return (
+    <div className="App">
+      <List foods={foods}/>
+    </div>
+  );
 }
 
 export default App;

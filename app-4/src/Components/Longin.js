@@ -1,22 +1,15 @@
-import React, {Component} from 'react'
+import React, {useState} from 'react'
 
-export default class Longin extends Component{
+const Longin = props =>{
 
+    return(
+        //onChange={e => this.props.update(e.target.value)}
+        <div>  
+            <input type='text' onChange={e => props.updateName(e.target.value)}/>
+            <input type='text' onChange={e => props.updatePassword(e.target.value)}/>
+            <button onClick={() => alert(`Username: ${props.name} Password: ${props.password}`) }>Login</button>
+        </div> 
+    )
 
-
-    handelLogin = () => {
-        alert(`Username: ${this.props.name} Password: ${this.props.password}`)
-    }
-
-    render(){
-
-        return(
-            //onChange={e => this.props.update(e.target.value)}
-            <div>  
-                <input type='text' onChange={e => this.props.updateName(e.target.value)}/>
-                <input type='text' onChange={e => this.props.updatePassword(e.target.value)}/>
-                <button onClick={this.handelLogin}>Login</button>
-            </div> 
-        )
-    }
 }
+export default Longin;

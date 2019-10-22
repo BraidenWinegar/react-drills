@@ -1,15 +1,13 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Image from './Components/Image'
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
       <div className="App">
         <Image url={'//http.cat/409'}/>
       </div>
     );
-  }
 }
 
 export default App;

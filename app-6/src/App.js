@@ -1,57 +1,39 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Todo from './Components/Todo';
 
-class App extends Component {
-  constructor (){
-    super();
-    this.state ={
-      list: [],
-      userInput: ''
-    };
+function App () {
+  
+  const [list, setList] = useState([]);
+  const [userInput, setUserInput] = useState('')
 
-    console.log(this.state.list)
-
-    // this.addListItem = this.addListItem.bind(this);
+  const addListItem = () => {    
+    setList( [...list, userInput])
+    setUserInput('')
   }
 
-  handleChange(val){
-    this.setState({userInput: val})
-    // console.log(this.state.userInput)
-  }
+  let mappedList = list.map((e,i) => <Todo key={i} task={e} />)
 
-  addListItem = () => {
-    // console.log(this.state.userInput, 'addList')
-    this.setState({
-      list: [...this.state.list, this.state.userInput],
-      userInput: ''
-    })
-    console.log(this.state)
-  }
+  return (
+    <div className="App">
+      <h1>My to-do list:</h1>
 
-  render() {
-    // console.log(this.state.list)
-
-    let list = this.state.list.map((e,i) => {
-    return <Todo key={i} task={e} />})
-
-    // console.log(list)
-    return (
-      <div className="App">
-        <h1>My to-do list:</h1>
-
-        <div>
-          <input
-            value={this.state.input}
-            onChange={e => this.handleChange(e.target.value)} 
-            placeholder="Enter new task" 
-          />
-          <button onClick={this.addListItem} >Add</button>
-        </div>
-        {list}
+      <div>
+        <input
+          value={userInput}
+          onChange={e => setUserInput(e.target.value)} 
+          placeholder="Enter new task" 
+        />
+        <button onClick={()=>{
+          setList( [...list, userInput]); 
+          setUserInput('');}} 
+        >
+          Add
+        </button>
       </div>
-    );
-  }
+      {mappedList}
+    </div>
+  );
 }
 
 export default App;

@@ -1,33 +1,20 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Editor from './Components/Editor'
 
 
-class App extends Component {
-  constructor (){
-    super();
-    this.state = {
-      textIn: '',
-      list: ['apples', 'peaches', 'pie', 'cobbler', 'tia curry', 'grilled cheese sandwich', 'soup',  'chowder'],
-    }
-  }
+const App = () => {
+  
+  const [textIn, setTextIn] = useState('')
+  const [list, setList] = useState(['apples', 'peaches', 'pie', 'cobbler', 'tia curry', 'grilled cheese sandwich', 'soup', 'sausage',  'chowder'])
 
-  handelChange = (val) => {
-    this.setState({
-      textIn: val
-    })
-  }
-
-  render() {
-
-    return (
-      <div className="App">
-        <Editor update={this.handelChange} 
-          list={this.state.list} 
-          textIn={this.state.textIn}/>
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <Editor update={e => setTextIn(e)} 
+        list={list} 
+        textIn={textIn}/>
+    </div>
+  );
 }
 
 export default App;

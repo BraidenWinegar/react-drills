@@ -1,36 +1,30 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 
-class NewTask extends Component {
-  constructor() {
-    super();
+function NewTask (props) {
+  
+  const [input, setInput] = useState('')
 
-    this.state = {
-      input: ""
-    };
+  const handleAdd = () => {
+    
   }
+  
+  return (
+    <div>
+      <input
+        value={input}
+        placeholder="Enter new task"
+        onChange={e => setInput(e.target.value)}
+      />
 
-  handleInputChange(value) {
-    this.setState({ input: value });
-  }
+      <button onClick={() => {
+        props.add(input); 
+        setInput('')}}
+      > 
+        Add 
+      </button>
+    </div>
+  );
 
-  handleAdd = () => {
-    this.props.add(this.state.input);
-    this.setState({ input: "" });
-  }
-
-  render() {
-    return (
-      <div>
-        <input
-          value={this.state.input}
-          placeholder="Enter new task"
-          onChange={e => this.handleInputChange(e.target.value)}
-        />
-
-        <button onClick={this.handleAdd}>Add</button>
-      </div>
-    );
-  }
 }
 
 export default NewTask;

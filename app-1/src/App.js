@@ -1,34 +1,19 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import TextBoxAndWords from './Components/TextBoxAndWords'
 
-class App extends Component {
-  constructor(){
-    super();
-    this.state = {
-      textInput: '',
-      displayText: ''
-    }
-  }
+const App = () => {
 
-  updateText = (val) => {
-    this.setState({
-      displayText: val,
-      textInput: val
-    })
-  }
+  const [textInput, setTextInput] = useState('')
 
-
-  render() {
-    return (
-      <div className="App">
-        <TextBoxAndWords 
-          update={this.updateText}
-          val={this.state.displayText}
-        />
-      </div>
-    );
-  }
+  return (
+    <div className="App">
+      <TextBoxAndWords 
+        update={val => setTextInput(val)}
+        val={textInput}
+      />
+    </div>
+  );
 }
 
 export default App;

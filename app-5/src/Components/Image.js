@@ -1,12 +1,10 @@
-import React, {Component} from 'react'
+import React from 'react'
 
-export default class Image extends Component{
-    render(){
-        return(
-            <div>
-                <img src={this.props.url} />
-                <caption><p>Error 409 Conflict </p></caption>
-            </div>
-        )
-    }
+export default function Image (props) {
+    return(
+        <div>
+            <img src={props.url} />
+            <caption><p>Error 409 Conflict </p></caption>
+        </div>
+    )
 }

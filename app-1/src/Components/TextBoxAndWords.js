@@ -1,22 +1,13 @@
-import React, {Component} from 'react'
+import React, { useState} from 'react'
 
-export default class TexBoxAndWords extends Component{
-    // constructor(){
-    //     super();
-    //     this.state{
-    //         soer: asd
-    //     }
-    // }
-
-    render(){
-        return(
-            <div onChange={(e) => this.props.update(e.target.value)}>
-                <input type='text' />
-                <p>{this.props.val}</p>
-            </div>
-        )
-    }
+ const TexBoxAndWords = props => {
+    return(
+        <div onChange={(e) => props.update(e.target.value)}>
+            <input type='text' />
+            <p>{props.val}</p>
+        </div>
+    )
 }
 
 
-
+export default TexBoxAndWords
